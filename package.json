@@ -1,0 +1,15 @@
+{
+  "name": "kite-healthcheck",
+  "version": "0.0.0",
+  "description": "Check the health of a kite from the CLI",
+  "main": "kite-healthcheck.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "0.0.8",
+    "kite.js": "0.0.40"
+  }
+}
