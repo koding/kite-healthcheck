@@ -5,6 +5,7 @@ new Kite(argv.u)
   .on('error', fail)
   .on('info', argv.v ? info : noop)
   .tell('kite.heartbeat', 10000 /* arbitrary large number */)
+  .timeout(argv.t ? argv.t : 10000)
   .then(succeed, fail)
 ;
 
