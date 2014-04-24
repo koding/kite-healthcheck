@@ -5,7 +5,7 @@ Kite = require('kite.js/promises');
 new Kite(argv.u)
   .on('error', fail)
   .on('info', argv.v ? info : noop)
-  .tell('kite.heartbeat', 10000 /* arbitrary large number */)
+  .tell('kite.ping')
   .timeout(argv.t ? argv.t * 1000 : 10000)
   .then(succeed, fail)
 ;
