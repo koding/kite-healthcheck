@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-argv = require('minimist')(process.argv);
-Kite = require('kite.js/promises');
+var argv = require('minimist')(process.argv),
+    Kite = require('kite.js/promises')
+;
 
 new Kite(argv.u)
   .on('error', fail)
