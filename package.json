@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "minimist": "0.0.8",
-    "kite.js": "0.0.40"
+    "kite.js": "latest"
   }
 }
