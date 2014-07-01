@@ -2,24 +2,23 @@
 var argv = require('minimist')(process.argv),
     Kite = require('kite.js/promises'),
     SockJs = require('node-sockjs-client')
+    logLevels = require('kite.js/logging').logLevels
 ;
+
+if ('string' !== typeof argv.u) {
+  fail(new Error("You must provide a url via the -u flag!"))
+}
 
 new Kite({
   url: argv.u,
-  transportClass: argv.sockjs ? SockJs : undefined // it'll default to WS
+  transportClass: argv.sockjs ? SockJs : undefined, // it'll default to WS
+  logLevel: argv.v ? logLevels.DEBUG : logLevels.WARNING
 })
   .on('error', fail)
-  .on('info', argv.v ? info : noop)
   .tell('kite.ping')
   .timeout(argv.t ? argv.t * 1000 : 10000)
   .then(succeed, fail)
 ;
-
-function noop() {}
-
-function info(info) {
-  console.info(info);
-}
 
 function fail(error) {
   console.error(error);
