@@ -27,6 +27,7 @@ function fail(error) {
   console.error(error);
   if(argv.n) {
     console.log("CRITICAL cannot connect to " + argv.u)
+    process.exit(2);
   }
   process.exit(1);
 }
