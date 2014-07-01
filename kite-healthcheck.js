@@ -22,9 +22,15 @@ new Kite({
 
 function fail(error) {
   console.error(error);
+  if(argv.n) {
+    console.log("CRITICAL cannot connect to " + argv.u)
+  }
   process.exit(1);
 }
 
 function succeed() {
+  if(argv.n) {
+    console.log("OK connected to " + argv.u)
+  }
   process.exit(0);
 }
