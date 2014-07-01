@@ -5,6 +5,9 @@ var argv = require('minimist')(process.argv),
     logLevels = require('kite.js/logging').logLevels
 ;
 
+//Some distros dont ship with RapidSSL CA Certs
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+
 if ('string' !== typeof argv.u) {
   fail(new Error("You must provide a url via the -u flag!"))
 }
@@ -22,9 +25,16 @@ new Kite({
 
 function fail(error) {
   console.error(error);
+  if(argv.n) {
+    console.log("CRITICAL cannot connect to " + argv.u)
+    process.exit(2);
+  }
   process.exit(1);
 }
 
 function succeed() {
+  if(argv.n) {
+    console.log("OK connected to " + argv.u)
+  }
   process.exit(0);
 }
