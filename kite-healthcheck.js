@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 var argv = require('minimist')(process.argv),
-    Kite = require('kite.js/promises')
+    Kite = require('kite.js/promises'),
+    SockJs = require('node-sockjs-client')
 ;
 
-new Kite(argv.u)
+new Kite({
+  url: argv.u,
+  transportClass: argv.sockjs ? SockJs : undefined // it'll default to WS
+})
   .on('error', fail)
   .on('info', argv.v ? info : noop)
   .tell('kite.ping')

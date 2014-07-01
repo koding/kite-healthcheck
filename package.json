@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "minimist": "0.0.8",
-    "kite.js": "latest"
+    "kite.js": "latest",
+    "node-sockjs-client": "^1.0.7"
   }
 }
